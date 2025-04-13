@@ -1,13 +1,11 @@
 from ariadne import make_executable_schema, graphql_sync
 from ariadne.explorer import ExplorerGraphiQL
 from flask import Flask, request, jsonify, render_template
-from ..flask_server.def_resolves_mutation import mutation
+from .def_resolves_mutation import mutation
 from .type_def_const import TYPE_DEF
 
 shema = make_executable_schema(TYPE_DEF, mutation)
-
 explorer_html = ExplorerGraphiQL().html(None)
-
 app = Flask(__name__)
 
 @app.route("/")
