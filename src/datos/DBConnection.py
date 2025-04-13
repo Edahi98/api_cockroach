@@ -1,15 +1,11 @@
 from peewee import PostgresqlDatabase
-from ..flask_server.run_server import app
 from os import environ
 
-def prepare_connection(key_db, key_host, key_user):
-    return PostgresqlDatabase(
-            database=environ.get(key_db),
-            host=environ.get(key_host))
-
 def init():
-    db: PostgresqlDatabase
-    if app.debug:
-        db = PostgresqlDatabase(
-            database=environ.get(""),
-            host="")
+    return PostgresqlDatabase(
+        database=environ.get("DATABASE"),
+        user=environ.get("USER"),
+        password=environ.get("PASSWORD"),
+        host=environ.get("HOST"),
+        port=environ.get("PORT")
+    )
