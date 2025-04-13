@@ -1,5 +1,5 @@
 from os import environ
-from peewee import Model, TextField, PostgresqlDatabase
+from peewee import Model, TextField, PostgresqlDatabase, BinaryUUIDField
 
 data = PostgresqlDatabase(
         database=environ.get("DATABASE"),
@@ -10,11 +10,13 @@ data = PostgresqlDatabase(
     )
 
 class UserModel(Model):
+    id = BinaryUUIDField(primary_key=True)
     nickname = TextField(null=False)
     password = TextField(null=False)
 
     class Meta:
         database = data
+        db_table = "user"
 
 def run_db():
     data.connect()
