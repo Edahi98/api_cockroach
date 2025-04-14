@@ -4,7 +4,6 @@ from ..utilerias.AuthJWT import AuthJWT
 
 
 def login(_, info, pwd, nickname):
-    try:
         print(f"LOGIN: PWD {pwd}")
         print(f"LOGIN: NICK {nickname}")
         resultado = UserModel.select().where(UserModel.nickname == nickname).get()
@@ -14,13 +13,7 @@ def login(_, info, pwd, nickname):
                 "token": AuthJWT.generate_token(nickname),
                 "code": 200
             }
-    except Exception as e:
-        print(f"LOG: ERROR LOGIN {e.with_traceback()}")
-        return {
-            "message": "El usuario no fue encontrado",
-            "code": 402
-        }
-
+        
 def islogged(_, info, token):
     if AuthJWT.verify_token(token):
         return 200
