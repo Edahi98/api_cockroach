@@ -6,7 +6,8 @@ data = PostgresqlDatabase(
         user=environ.get("USER"),
         password=environ.get("PASSWORD"),
         host=environ.get("HOST"),
-        port=environ.get("PORT")
+        port=environ.get("PORT"),
+        sslmode='require',
     )
 
 class UserModel(Model):
