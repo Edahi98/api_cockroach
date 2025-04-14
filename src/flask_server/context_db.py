@@ -11,12 +11,12 @@ data = PostgresqlDatabase(
 
 class UserModel(Model):
     id = BinaryUUIDField(primary_key=True)
-    nickname = TextField(null=False)
-    password = TextField(null=False)
+    nickname = TextField(null=False, unique=True)
+    password = TextField(null=False, unique=True)
 
     class Meta:
         database = data
-        db_table = "user"
+        db_table = "usuario"
 
 def run_db():
     data.connect()
