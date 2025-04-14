@@ -10,4 +10,6 @@ class HasherPWD:
 
     @staticmethod
     def check(hash, pwd):
+        print(f"CHECK JWT: HASH {hash}")
+        print(f"CHECK JWT: PWD {pwd}")
         return HasherPWD.ph.verify(hash, pwd)
