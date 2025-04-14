@@ -6,7 +6,7 @@ data = PostgresqlDatabase(
         user=environ.get("USER"),
         password=environ.get("PASSWORD"),
         host=environ.get("HOST"),
-        port=environ.get("PORT"),
+        port=19781,
         sslmode='require',
     )
 
