@@ -14,7 +14,8 @@ def login(_, info, pwd, nickname):
                 "token": AuthJWT.generate_token(nickname),
                 "code": 200
             }
-    except:
+    except Exception as e:
+        print(f"LOG: ERROR LOGIN {e}")
         return {
             "message": "El usuario no fue encontrado",
             "code": 402
