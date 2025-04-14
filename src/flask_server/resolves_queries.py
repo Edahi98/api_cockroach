@@ -15,7 +15,7 @@ def login(_, info, pwd, nickname):
                 "code": 200
             }
     except Exception as e:
-        print(f"LOG: ERROR LOGIN {e}")
+        print(f"LOG: ERROR LOGIN {e.with_traceback()}")
         return {
             "message": "El usuario no fue encontrado",
             "code": 402
