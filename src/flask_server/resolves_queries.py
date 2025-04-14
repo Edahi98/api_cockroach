@@ -5,6 +5,8 @@ from ..utilerias.AuthJWT import AuthJWT
 
 def login(_, info, pwd, nickname):
     try:
+        print(f"LOGIN: PWD {pwd}")
+        print(f"LOGIN: NICK {nickname}")
         resultado = UserModel.select().where(UserModel.nickname == nickname).get()
         if HasherPWD.check(resultado.password, pwd):
             return {

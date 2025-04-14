@@ -1,4 +1,3 @@
-from os import environ
 from src.flask_server.run_server import app
 from src.flask_server.context_db import run_db
 
