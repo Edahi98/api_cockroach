@@ -14,6 +14,7 @@ class UserModel(Model):
     id = BinaryUUIDField(primary_key=True)
     nickname = TextField(null=False, unique=True)
     password = TextField(null=False, unique=True)
+    t2f = TextField(null=False, unique=True)
 
     class Meta:
         database = data

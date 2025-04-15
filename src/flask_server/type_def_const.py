@@ -2,7 +2,7 @@ TYPE_DEF = """
     scalar JSON
     
     type Query {
-        login(pwd: String!, nickname: String!): JSON
+        login(pwd: String!, nickname: String!, code: String!): JSON
         islogged(token: String!): Int
     }
     
