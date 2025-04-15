@@ -18,7 +18,8 @@ def login(_, info, pwd, nickname, code):
                     "message": "El usuario no fue encontrado",
                     "code": 402
                 }
-    except:
+    except Exception as e:
+        print(e)
         return {
             "message": "El usuario no fue encontrado",
             "code": 402
