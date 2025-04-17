@@ -9,7 +9,11 @@ from flask import Blueprint
 from flask_restx import Api, Resource
 
 api = Blueprint("api", __name__)
-_api = Api(api)
+_api = Api(
+    api,
+    title="Cockroach Api",
+    description="Api con acceso restringido"
+)
 
 @_api.route("/login_usuario/<string:pwd>/<string:nickname>/<string:code>")
 class LoginUsuario(Resource):
