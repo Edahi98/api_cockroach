@@ -5,7 +5,7 @@ from typing import Literal
 
 class LibSQLHttp:
     HEADERS = headers={
-                "Authorization": f"Bearer {environ.get("TURSO_TOKEN")}",
+                "Authorization": f"Bearer {str(environ.get('TURSO_TOKEN'))}",
                 "Content-Type": "application/json",
             }
 
