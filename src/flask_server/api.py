@@ -2,6 +2,7 @@ from secrets import token_hex
 from uuid import uuid4
 from src.flask_server.context_db import UserModel
 from src.utilerias.HasherPWD import HasherPWD
+from ..libSQl.LibQLHttp import LibSQLHttp
 from ..pillow.image import Image
 from ..utilerias.AuthJWT import AuthJWT
 from pyotp import TOTP, random_base32
@@ -84,6 +85,16 @@ class User(Resource):
                 "qr_code": qr_text
             }
         except:
+            return {
+                "code": 401
+            }
+
+@_api.route("/libSQL/getAll/TipoArticulo/<string:token>")
+class LibSQLGetAllTipoArticulo(Resource):
+    def get(self, token):
+        if AuthJWT.verify_token(token):
+            return LibSQLHttp.excute("SELECT * FROM TipoArticulo", "execute", "GetAll")
+        else:
             return {
                 "code": 401
             }
