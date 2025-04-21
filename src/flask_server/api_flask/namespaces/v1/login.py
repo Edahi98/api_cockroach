@@ -18,10 +18,9 @@ class Login(Resource):
     @api_login.doc(body=user)
     @api_login.doc("get-usuario")
     @api_login.response(400, "Usuario no encontrado")
-    def get(self):
+    def post(self):
         try:
             datos = request.get_json()
-            print(datos)
             resultado = UserModel.select().where(UserModel.nickname == datos["nick"]).get()
             if HasherPWD.check(resultado.password, datos["pwd"]):
                 totp_object = TOTP(resultado.t2f)
@@ -33,4 +32,5 @@ class Login(Resource):
                 else:
                     api_login.abort(400)
         except Exception as e:
+            print(e)
             api_login.abort(400)
