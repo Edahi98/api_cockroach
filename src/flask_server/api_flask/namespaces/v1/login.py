@@ -21,6 +21,7 @@ class Login(Resource):
     def get(self):
         try:
             datos = request.get_json()
+            print(datos)
             resultado = UserModel.select().where(UserModel.nickname == datos["nick"]).get()
             if HasherPWD.check(resultado.password, datos["pwd"]):
                 totp_object = TOTP(resultado.t2f)
