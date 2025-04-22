@@ -7,6 +7,7 @@ from src.utilerias.HasherPWD import HasherPWD
 
 
 api_user = Namespace("user", description="Apartado para usuario")
+
 user = api_user.model("User", {
     "nick": fields.String(required=True, description="Nombre de usuario"),
     "pwd": fields.String(required=True, description="Contraseña de usuario")
